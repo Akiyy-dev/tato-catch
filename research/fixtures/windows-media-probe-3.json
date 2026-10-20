@@ -1,0 +1,86 @@
+{
+  "pid": 3932,
+  "startedAt": "2026-10-20T15:28:13.327Z",
+  "finishedAt": "2026-10-20T15:31:03.329Z",
+  "reason": "timeout",
+  "matched": false,
+  "match": null,
+  "counts": {
+    "0xe52050:0x78d4dec1": 33,
+    "0xe52c40:0x9a65ea1f": 33,
+    "0xe52c40:0xeb0467fb": 1,
+    "0xe52c40:0xa8e68187": 17,
+    "0xe52050:0x74ae4240": 13,
+    "0xe52c40:0xc37521c9": 4,
+    "0xdb9f80:0xc37521c9": 4,
+    "0xe52c40:0x62ba04d9": 11,
+    "messageType:0x81ff9c4a": 14,
+    "0xdb9f80:0x62ba04d9": 3,
+    "0xe52c40:0x2f2f21bf": 1,
+    "0xdb9f80:0x2f2f21bf": 1
+  },
+  "messageDiagnostics": [
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "9"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "15"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "15"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "21"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "9"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "9"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "12"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "12"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "12"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "24"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "29"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "27"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "18"
+    },
+    {
+      "mediaTag": "0x0",
+      "bodyByteLength": "77"
+    }
+  ],
+  "readErrors": 0,
+  "hooksDetached": true,
+  "scope": "Only media associated with exact fixed caption; bounded embedded thumbnail bytes; no chat history/profile/session files, access hashes or full-image download",
+  "helper_returncode": 0,
+  "helper_forced_exit": false,
+  "executable_sha256": "76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58"
+}

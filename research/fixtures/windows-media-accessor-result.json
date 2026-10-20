@@ -1,0 +1,16 @@
+{
+  "pid": 3932,
+  "startedAt": "2026-10-20T15:38:41.680Z",
+  "finishedAt": "2026-10-20T15:41:31.683Z",
+  "reason": "timeout",
+  "matched": false,
+  "match": null,
+  "counts": {},
+  "messageDiagnostics": [],
+  "readErrors": 0,
+  "hooksDetached": true,
+  "scope": "Only media associated with exact fixed caption; bounded embedded thumbnail bytes; no chat history/profile/session files, access hashes or full-image download",
+  "helper_returncode": 0,
+  "helper_forced_exit": false,
+  "executable_sha256": "76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58"
+}

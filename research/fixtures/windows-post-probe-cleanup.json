@@ -1,0 +1,170 @@
+{
+  "pid": 3932,
+  "arch": "x64",
+  "moduleName": "Tatotalk.exe",
+  "modulePath": "D:\\ttt\\Tatotalk.exe",
+  "moduleBase": "0x7ff653f50000",
+  "moduleSize": 113115136,
+  "candidates": [
+    {
+      "rva": "0xdb9f80",
+      "firstBytes": "48895c240848897424185557415441564157488bec4883ec704c8bf933f68b42",
+      "instructions": [
+        {
+          "address": "0x7ff654d09f80",
+          "instruction": "mov qword ptr [rsp + 8], rbx"
+        },
+        {
+          "address": "0x7ff654d09f85",
+          "instruction": "mov qword ptr [rsp + 0x18], rsi"
+        },
+        {
+          "address": "0x7ff654d09f8a",
+          "instruction": "push rbp"
+        },
+        {
+          "address": "0x7ff654d09f8b",
+          "instruction": "push rdi"
+        },
+        {
+          "address": "0x7ff654d09f8c",
+          "instruction": "push r12"
+        },
+        {
+          "address": "0x7ff654d09f8e",
+          "instruction": "push r14"
+        },
+        {
+          "address": "0x7ff654d09f90",
+          "instruction": "push r15"
+        },
+        {
+          "address": "0x7ff654d09f92",
+          "instruction": "mov rbp, rsp"
+        }
+      ],
+      "matches_on_disk_code": true
+    },
+    {
+      "rva": "0xdb95a0",
+      "firstBytes": "48894c2408555356574154415541564157488dac2448ffffff4881ecf8010000",
+      "instructions": [
+        {
+          "address": "0x7ff654d095a0",
+          "instruction": "mov qword ptr [rsp + 8], rcx"
+        },
+        {
+          "address": "0x7ff654d095a5",
+          "instruction": "push rbp"
+        },
+        {
+          "address": "0x7ff654d095a6",
+          "instruction": "push rbx"
+        },
+        {
+          "address": "0x7ff654d095a7",
+          "instruction": "push rsi"
+        },
+        {
+          "address": "0x7ff654d095a8",
+          "instruction": "push rdi"
+        },
+        {
+          "address": "0x7ff654d095a9",
+          "instruction": "push r12"
+        },
+        {
+          "address": "0x7ff654d095ab",
+          "instruction": "push r13"
+        },
+        {
+          "address": "0x7ff654d095ad",
+          "instruction": "push r14"
+        }
+      ],
+      "matches_on_disk_code": true
+    },
+    {
+      "rva": "0xe52c40",
+      "firstBytes": "48895c24085556574154415541564157488dac24b0feffff4881ec5002000048",
+      "instructions": [
+        {
+          "address": "0x7ff654da2c40",
+          "instruction": "mov qword ptr [rsp + 8], rbx"
+        },
+        {
+          "address": "0x7ff654da2c45",
+          "instruction": "push rbp"
+        },
+        {
+          "address": "0x7ff654da2c46",
+          "instruction": "push rsi"
+        },
+        {
+          "address": "0x7ff654da2c47",
+          "instruction": "push rdi"
+        },
+        {
+          "address": "0x7ff654da2c48",
+          "instruction": "push r12"
+        },
+        {
+          "address": "0x7ff654da2c4a",
+          "instruction": "push r13"
+        },
+        {
+          "address": "0x7ff654da2c4c",
+          "instruction": "push r14"
+        },
+        {
+          "address": "0x7ff654da2c4e",
+          "instruction": "push r15"
+        }
+      ],
+      "matches_on_disk_code": true
+    },
+    {
+      "rva": "0xe52050",
+      "firstBytes": "48895c24084c894424185556574154415541564157488d6c24d94881ecf00000",
+      "instructions": [
+        {
+          "address": "0x7ff654da2050",
+          "instruction": "mov qword ptr [rsp + 8], rbx"
+        },
+        {
+          "address": "0x7ff654da2055",
+          "instruction": "mov qword ptr [rsp + 0x18], r8"
+        },
+        {
+          "address": "0x7ff654da205a",
+          "instruction": "push rbp"
+        },
+        {
+          "address": "0x7ff654da205b",
+          "instruction": "push rsi"
+        },
+        {
+          "address": "0x7ff654da205c",
+          "instruction": "push rdi"
+        },
+        {
+          "address": "0x7ff654da205d",
+          "instruction": "push r12"
+        },
+        {
+          "address": "0x7ff654da205f",
+          "instruction": "push r13"
+        },
+        {
+          "address": "0x7ff654da2061",
+          "instruction": "push r14"
+        }
+      ],
+      "matches_on_disk_code": true
+    }
+  ],
+  "scope": "Module metadata plus executable bytes/instructions only; no message hooks or profile/session/chat reads",
+  "helper_returncode": 0,
+  "helper_forced_exit": false,
+  "executable_sha256": "76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58"
+}

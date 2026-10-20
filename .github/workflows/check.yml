@@ -1,0 +1,31 @@
+name: Check source probe kit
+
+on:
+  push:
+    branches: ['main', 'dev/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline-checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Verify source without client attachment
+        run: python scripts/verify.py
+      - name: Test archive safety and reproducibility
+        run: python -m unittest discover -s tests -v
+      - name: Build source probe kit
+        run: python scripts/build_release.py

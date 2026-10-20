@@ -1,0 +1,32 @@
+{
+  "pid": 3932,
+  "startedAt": "2026-10-20T15:20:39.732Z",
+  "finishedAt": "2026-10-20T15:23:29.736Z",
+  "reason": "timeout",
+  "matched": false,
+  "match": null,
+  "counts": {
+    "0xe52050:0x74ae4240": 20,
+    "0xe52c40:0xa8e68187": 22,
+    "0xe52c40:0x62ba04d9": 15,
+    "0xe52050:0x78d4dec1": 45,
+    "0xe52c40:0x9a65ea1f": 44,
+    "0xe52c40:0x2f2f21bf": 3,
+    "0xdb9f80:0x2f2f21bf": 2,
+    "0xdb9f80:0x62ba04d9": 3,
+    "0xe52c40:0xeb0467fb": 2,
+    "0xe52c40:0x4214f37f": 3,
+    "0xe52c40:0x1bfbd823": 4,
+    "0xe52c40:0xc37521c9": 2,
+    "0xdb9f80:0xc37521c9": 2,
+    "0xe52c40:0x5c486927": 1,
+    "0xe52c40:0x1f2b0afd": 1,
+    "0xdb9f80:0x1f2b0afd": 1
+  },
+  "readErrors": 0,
+  "hooksDetached": true,
+  "scope": "Only media associated with exact fixed caption; bounded embedded thumbnail bytes; no chat history/profile/session files, access hashes or full-image download",
+  "helper_returncode": 0,
+  "helper_forced_exit": false,
+  "executable_sha256": "76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58"
+}

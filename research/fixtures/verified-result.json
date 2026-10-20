@@ -1,0 +1,43 @@
+{
+  "status": "validated_one_new_text_message_from_official_windows_client",
+  "observed_at_asia_shanghai": "2026-10-20T23:10:11.043000+08:00",
+  "target_executable": "D:\\ttt\\Tatotalk.exe",
+  "target_sha256": "76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58",
+  "capture": {
+    "text": "TATO-PROBE-20261020-你好",
+    "encoding": "UTF-8",
+    "byteLength": 26,
+    "updateTag": "0x1f2b0afd",
+    "candidateRva": "0xe52c40",
+    "layout": "new-message-payload+0x48",
+    "observedAt": "2026-10-20T15:10:11.043Z"
+  },
+  "read_errors": 0,
+  "cleanup": {
+    "hooks_detached": true,
+    "all_four_code_regions_restored": true,
+    "client_process_id": 3932,
+    "helper_exited_normally": true
+  },
+  "tools": {
+    "java": "21.0.12.1",
+    "jadx": "1.5.6",
+    "ghidra": "12.1.4",
+    "capstone": "5.0.9",
+    "pefile": "2024.8.26",
+    "frida_inject": "17.24.3"
+  },
+  "scope": "Throwaway feasibility probe; exact fixed test text only; no account/session/profile files accessed",
+  "evidence": [
+    "windows-text-probe-2.json",
+    "windows-post-probe-cleanup.json",
+    "windows-message-layout-evidence.md",
+    "ghidra-targeted-summary.md"
+  ],
+  "remaining": [
+    "Persistent receiver and project adapter",
+    "Conversation/message identifiers and routing",
+    "Long-running behavior, reconnect and deduplication tests",
+    "Linux deployment architecture; current proof requires the Windows client"
+  ]
+}

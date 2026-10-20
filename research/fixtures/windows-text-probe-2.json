@@ -1,0 +1,34 @@
+{
+  "pid": 3932,
+  "startedAt": "2026-10-20T15:09:54.660Z",
+  "finishedAt": "2026-10-20T15:10:11.043Z",
+  "reason": "exact-test-message",
+  "matched": true,
+  "match": {
+    "text": "TATO-PROBE-20261020-你好",
+    "encoding": "UTF-8",
+    "byteLength": 26,
+    "updateTag": "0x1f2b0afd",
+    "candidateRva": "0xe52c40",
+    "layout": "new-message-payload+0x48",
+    "observedAt": "2026-10-20T15:10:11.043Z"
+  },
+  "counts": {
+    "0xe52050:0x74ae4240": 4,
+    "0xe52c40:0xa8e68187": 5,
+    "0xe52c40:0x62ba04d9": 3,
+    "0xe52050:0x78d4dec1": 5,
+    "0xe52c40:0x9a65ea1f": 4,
+    "0xe52c40:0x5c486927": 1,
+    "0xdb9f80:0x62ba04d9": 1,
+    "0xe52c40:0x1f2b0afd": 1
+  },
+  "readErrors": 0,
+  "stringCandidates": 4,
+  "expectedLengthCandidates": 1,
+  "hooksDetached": true,
+  "scope": "Only constructor tags and verified-layout string fields; only the exact fixed test text can be exported; no account/profile/session files",
+  "helper_returncode": 0,
+  "helper_forced_exit": false,
+  "executable_sha256": "76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58"
+}
