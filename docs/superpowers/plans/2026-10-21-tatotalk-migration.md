@@ -23,7 +23,7 @@
 - [x] Copy and hash-verify the research snapshot; change only destination path-dependent scripts.
 - [x] Add setup, documentation, curated evidence fixtures, offline checks and a deterministic source archive build.
 - [x] Run syntax checks, meaningful packaging tests and local build; audit the staged file list.
-- [ ] Obtain independent whole-change review and address blocking findings.
+- [x] Obtain independent whole-change review and address blocking findings.
 - [ ] Push a feature branch, create and attach a PR, verify CI and merge.
 - [ ] Tag the merged commit, publish prerelease artifacts, and verify remote state and asset hashes.
 

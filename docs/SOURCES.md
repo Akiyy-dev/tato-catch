@@ -25,7 +25,7 @@ Windows MSI 的 ProductVersion 是 `2.47.0324`，EXE 资源版本是 `2.22.0.0`�
 
 ## Python 分析依赖
 
-版本固定为 `frida==17.24.3`、`capstone==5.0.9`、`pefile==2024.8.26`。历史 pip 安装记录列出的 Windows wheels 如下：
+当前 `requirements-analysis.txt` 仅安装 `capstone==5.0.9` 和 `pefile==2024.8.26`。动态实验使用上文的 Frida CLI，不依赖 Python `frida` 包。`frida==17.24.3` 的 wheel 属于历史下载尝试，尚未安装成功；历史记录涉及的 Windows wheels 如下：
 
 | 包及 wheel | 官方 PyPI 文件 | SHA-256 |
 | --- | --- | --- |
