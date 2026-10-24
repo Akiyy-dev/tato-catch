@@ -44,7 +44,7 @@ class ProbeConfigurationTests(unittest.TestCase):
 
     def test_all_published_probe_scripts_fail_closed_without_runner_binding(self):
         scripts = list((ROOT / "research").glob("*.js"))
-        self.assertEqual(len(scripts), 6)
+        self.assertGreaterEqual(len(scripts), 7)
         for path in scripts:
             with self.subTest(script=path.name):
                 source = path.read_text(encoding="utf-8")

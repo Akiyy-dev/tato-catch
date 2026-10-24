@@ -1,67 +1,46 @@
 # Tato Catch
 
-TatoTalk 普通账号消息捕获的 Windows 研究工具。当前版本为 **0.1.0-alpha.2 研究预发布**。
+在已登录的 Windows 官方 TatoTalk 客户端中持续采集新文本，通过 TG-forwarder 的消息接入 API 推送到远端。当前为 **0.2.0-alpha.1 研究预发布**，仅支持已校验的客户端版本。
 
-| 能力 | 当前结果 |
+| 能力 | 状态 |
 | --- | --- |
-| Windows 新消息文本 | 曾在受控实验中捕获固定测试文本，UTF-8 正确，探针正常移除 |
-| 图片 / 媒体 | 已分析结构，受控探针未匹配；尚未取得图片或缩略图 |
-| 长期监听、重连、去重、消息路由 | 尚未实现 |
-| Linux 无桌面服务器监听 | 尚未实现；动态验证依赖已登录的 Windows 官方客户端 |
+| 连续文本采集 | 已实现已识别的新消息更新路径，默认只接收入站消息 |
+| 远端推送 | POST `/api/ingest/v1/messages`，独立 `tgfi_` 接入 Token |
+| 断网恢复 | 本地 SQLite 持久队列、重试、回执和幂等 ID |
+| 会话与发送者 | 已验证布局提供私聊 / 群 / 频道 ID 和可用的发送者数字 ID，无名称解析 |
+| 媒体、Linux 原生采集 | 尚未实现 |
 
-探针按指定 EXE 的 SHA-256、进程路径和函数字节进行校验，仅匹配固定示例标记。当前不是完整客户端或生产消息服务。TatoTalk 与其他应用的账号和协议兼容性没有得到确认。
+本版已在真实客户端验证三条入站私聊经持续采集到本机 HTTP 接收端，其中两条同文消息保持独立，消息 / 会话 / 发送者 ID 均已取得。合成 Frida、子进程和持久队列测试同时通过；更广的会话覆盖率及你的真实远端部署仍须验收。不会回填历史，也不保证覆盖所有客户端内部分发路径。
 
-## 目录与隐私
+## 快速开始
 
-```text
-research/               原创分析、准备脚本与限时探针
-  ghidra-scripts/       定向反编译脚本
-  samples/              本地样本（忽略）
-  tools/                本地便携工具（忽略）
-scripts/                环境准备、隐私检查与源码包构建
-tests/                  离线测试与合成测试数据
-docs/                   状态、样本来源与发布说明
-```
-
-原始运行记录、机器路径、账号资料和会话信息只保留本地，不进入 Git 或发布包。运行报告位于被忽略的研究输出中；由运行器注入客户端路径的临时 JS 在退出时删除。发布检查拒绝绝对机器路径和原始历史 fixtures。
-
-## 环境准备
-
-需要 Windows x64、Python 3.12+ 和已登录的官方 TatoTalk 客户端。Node.js、PowerShell 用于源码检查；Java 21、Ghidra 12.1.4 和 JADX 1.5.6 用于静态分析。
-
-在仓库根目录执行：
+需要 Windows x64、Python 3.12+，并保持官方客户端登录。先在仓库根目录准备工具：
 
 ```powershell
 python scripts/bootstrap.py
-python scripts/verify.py
-python -m unittest discover -s tests -v
 ```
 
-`bootstrap.py` 将依赖安装到忽略的工具目录，下载并校验 Frida CLI；不会登录、启动或附加客户端。源码 ZIP 不含第三方工具。
+在远端 TG-forwarder 管理后台进入“消息接入”，创建来源并保存 `tgfi_` Token，再配置该来源的目标和发布模式。这里使用接入 Token；拉取 API Token 和管理员密码不能替代它。
 
-## 复现文本验证
-
-仅支持以下 SHA-256 的官方 EXE：
-
-```text
-76c9c41b7dfac2861f3d30aea53e7a6261b136c610acddd87097dae8f1a6de58
-```
-
-路径通过必填参数提供；保留 PID 路径匹配、文件哈希及函数字节校验。升级客户端后须重新分析，不能跳过版本校验。
+在本地 PowerShell 设置当前终端的配置：
 
 ```powershell
 $client = Get-Process -Name Tatotalk | Select-Object -First 1
-# 先核验模块与代码；没有消息 hook：
-python research/run_windows_module_probe.py --target-exe $client.Path --pid $client.Id
-# 四项 matches_on_disk_code 都为 true 后，启动限时文本实验：
-python research/run_windows_module_probe.py --target-exe $client.Path --pid $client.Id --script windows-marked-text-probe.js --seconds 125 --marker TATO_TEXT_PROBE: --report windows-text-probe-new.json --ready-marker TATO_TEXT_READY
+$env:TATO_TARGET_EXE = $client.Path
+$env:TATO_INGEST_URL = 'https://forwarder.example.com'
+$secret = Read-Host 'TG-forwarder 接入 Token' -AsSecureString
+$env:TATO_INGEST_TOKEN = [System.Net.NetworkCredential]::new('', $secret).Password
+python -m tatocatch send-test
+python -m tatocatch listen
 ```
 
-出现 `PROBE_READY` 后，从另一个测试账号发送通用示例文本 `TATO-PROBE-你好`。结果只写入本地报告，正常结束或超时会移除 hook。图片脚本使用通用说明 `TATO-IMG-PROBE`，尚未验证成功。
+将示例域名替换为你的服务域名。出现 `"event": "ready"` 后开始采集；`"state": "delivered"` 表示服务器已接受入队。按 Ctrl+C 停止并移除本工具的 hook，待发消息保留在本地。
 
-Ghidra 脚本必填 `-GhidraRoot`；Java 默认从 PATH 查找，也可通过 `-JavaExecutable` 指定。客户端和工具的本机安装位置无需写入源码。
+完整配置、恢复方式和能力边界见 [远端推送指南](docs/REMOTE-PUSH.md)。旧的固定标记实验仍保留在 `research/` 中。
 
-## 构建与发布
+## 隐私与发布
+
+真实路径、Token、账号资料、运行日志、消息和队列只保留本地。默认状态目录 `.local/state` 被忽略；源码 ZIP 不包含客户端安装包、工具、原始记录或反编译输出。发布检查拒绝机器绝对路径和原始历史 fixtures。
 
 ```powershell
 python scripts/verify.py
@@ -69,6 +48,6 @@ python -m unittest discover -s tests -v
 python scripts/build_release.py
 ```
 
-`dist/` 生成源码探针 ZIP 与 `SHA256SUMS`。构建使用与校验相同的白名单和隐私检查，不包含原始运行记录、安装包、工具、反编译输出或账号资料。
+构建产物为 `dist/` 中的源码工具包及 `SHA256SUMS`。Node.js 和 PowerShell 用于离线检查；动态运行无需安装 Ghidra。
 
-分支和 PR 运行离线检查；指向主分支的版本标签生成 GitHub 预发布。更多信息：[当前状态](docs/STATUS.md) · [来源](docs/SOURCES.md) · [发布范围](docs/MIGRATION.md) · [版本说明](docs/RELEASE-v0.1.0-alpha.2.md)
+[当前状态](docs/STATUS.md) · [样本来源与哈希](docs/SOURCES.md) · [发布范围](docs/MIGRATION.md) · [版本说明](docs/RELEASE-v0.2.0-alpha.1.md)

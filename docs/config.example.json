@@ -1,0 +1,10 @@
+{
+  "target_exe": "",
+  "ingest_url": "https://forwarder.example.com",
+  "ingest_token": "",
+  "state_dir": ".local/state",
+  "conversation_id": "tatotalk-stream",
+  "conversation_name": null,
+  "http_timeout": 30,
+  "include_outgoing": false
+}
