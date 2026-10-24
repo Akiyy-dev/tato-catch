@@ -55,7 +55,7 @@ class ReleaseTests(unittest.TestCase):
         return files
 
     def test_allowlist_accepts_supported_source_locations(self):
-        names = ["README.md", "VERSION", ".gitignore", ".gitattributes",
+        names = ["tatocatch/__init__.py", "tatocatch/config.py", "README.md", "VERSION", ".gitignore", ".gitattributes",
                  "requirements-analysis.txt", "docs/status.md", "scripts/verify.py",
                  "tests/test_release.py", ".github/workflows/release.yml",
                  "research/probe.py", "research/probe.ps1", "research/probe.js",

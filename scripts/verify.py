@@ -78,6 +78,7 @@ def audit_entry(name, data, *, is_symlink=False):
         name in ROOT_FILES
         or (len(parts) >= 2 and parts[0] in {"docs", "scripts", "tests"})
         or (len(parts) >= 3 and parts[:2] == [".github", "workflows"])
+        or (len(parts) == 2 and parts[0] == "tatocatch" and suffix == ".py")
         or (len(parts) == 2 and parts[0] == "research" and suffix in RESEARCH_EXTENSIONS)
         or (len(parts) == 3 and parts[:2] == ["research", "ghidra-scripts"] and suffix == ".java")
     )
